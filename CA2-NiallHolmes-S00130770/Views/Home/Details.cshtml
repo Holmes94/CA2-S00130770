@@ -1,0 +1,51 @@
+﻿@using CA2_NiallHolmes_S00130770.Models
+@model CA2_NiallHolmes_S00130770.Models.Movie
+
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+    <h2>@ViewBag.PageTitle</h2>
+    </div>
+    <table class="table table-condensed table-striped">
+        <tr>
+            <th> 
+         @Html.DisplayNameFor(model => model.Actors)
+            </th>
+            <th> 
+         @Html.DisplayNameFor(model => model.Actors)
+            </th>
+
+            @if (Model != null)
+        {
+            foreach (var item in Model.Actors)
+             {
+                 <tr> 
+                     <td>
+                         @Html.DisplayFor(modelItem => item.ActorName)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.ActorScreenName)
+                     </td>
+              
+                 </tr>
+      
+             }
+        }
+         </table>
+        <div class="panel-footer">
+   <a class="btn-sm btn-info" href="@Url.Action("Index")"><span class="glyphicon glyphicon-home"></span>&nbsp;Back to List</a>
+    </div>
+</div>
+    
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () { // ready event
+            toastr.info('Here you see details of a movie');
+        });
+
+    </script>
+}

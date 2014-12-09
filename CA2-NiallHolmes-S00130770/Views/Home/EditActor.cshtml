@@ -1,0 +1,57 @@
+﻿@model CA2_NiallHolmes_S00130770.Models.Actor
+
+@{
+    ViewBag.Title = "EditActor";
+}
+
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="lead">Edit Actor</div>
+        </div>
+        <div class="panel-body">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+
+        @Html.HiddenFor(model => model.ActorID)
+
+        <div class="row">
+        <div class="form-group col-xs-4">
+            @Html.LabelFor(model => model.ActorName)
+            @Html.TextBoxFor(model => model.ActorName,new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ActorName)
+        </div>
+            
+
+        <div class="form-group col-xs-4">
+            @Html.LabelFor(model => model.ActorScreenName)
+            @Html.TextBoxFor(model => model.ActorScreenName,new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ActorScreenName)
+        </div>
+    
+       
+           </div>
+    <div>
+            <input type="submit" class="btn btn-sm btn-success" value="Save" />         
+            <a class="btn btn-sm btn-info" href="@Url.Action("Index")"><span class="glyphicon glyphicon-home"></span>&nbsp;Back to List</a>
+                </div>
+
+}
+        </div>
+    </div>
+<div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () { // ready event
+            toastr.warning('Here you can edit an actor');
+        });
+
+    </script>
+}

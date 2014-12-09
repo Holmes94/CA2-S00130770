@@ -1,0 +1,47 @@
+﻿@model CA2_NiallHolmes_S00130770.Models.Actor
+
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="lead">Add Actor</div>
+        </div>
+
+        <div class="panel-body">
+    @using (Html.BeginForm()) 
+    {
+    @Html.ValidationSummary(true)
+        
+        <div class="row">
+        <div class="form-group col-xs-4">
+            @Html.LabelFor(model => model.ActorName)
+             @Html.TextBoxFor(model => model.ActorName,new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ActorName)
+        </div>
+
+        <div class="form-group col-xs-4">
+            @Html.LabelFor(model => model.ActorScreenName)
+            @Html.TextBoxFor(model => model.ActorScreenName,new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ActorScreenName)
+        </div>  
+</div>
+        <div>
+            <button class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus"></span>Create</button>
+                <a class="btn btn-sm btn-info" href="@Url.Action("Index")"><span class="glyphicon glyphicon-home"></span>&nbsp;Back to List</a>
+        </div>
+    }
+          
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () { // ready event
+            toastr.success('Here you can add an actor');
+        });
+
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿@model CA2_NiallHolmes_S00130770.Models.Movie
+<div class="container">
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <div class="lead">Edit Movie</div>
+        </div>
+    
+    <div class="panel-body">
+        @using (Html.BeginForm()) 
+        {
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.MovieID)
+
+        <div class="row">
+        <div class="form-group col-xs-4">
+            @Html.LabelFor(model => model.MovieName)
+            @Html.TextBoxFor(model => model.MovieName, 
+                    new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MovieName)
+        </div>
+        
+        <div class="form-group col-xs-4">
+            @Html.LabelFor(model => model.Genre)
+            @Html.DropDownListFor(model => model.Genre, Enum.GetNames(typeof(CA2_NiallHolmes_S00130770.Models.Genre)).Select(a => new SelectListItem { Text = a }),new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Genre)
+        </div>
+
+       
+        
+</div>
+            <div>
+            <input type="submit" class="btn btn-sm btn-success" value="Save" />         
+            <a class="btn btn-sm btn-info" href="@Url.Action("Index")"><span class="glyphicon glyphicon-home"></span>&nbsp;Back to List</a>
+                </div>
+}
+</div>
+         
+
+@*<div>
+<a class="btn btn-info" href="@Url.Action("Index")"><span class="glyphicon glyphicon-home"></span>&nbsp;Back to List</a>
+    @Html.ActionLink("Back to List", "Index", null, new {@class = "btn-sm btn-primary"})
+</div>*@
+</div>            
+</div>
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $(function () { // ready event
+            toastr.warning('Here you can edit a movie');
+        });
+
+    </script>
+}
